@@ -2,7 +2,7 @@
 # Specify the compiler
 CC = gcc
 # Compiler flags
-CFLAGS =  -Wall -Wextra -Werror -Wpedantic -std=c99 -g
+CFLAGS =  -Wall -Wextra -Werror -Wpedantic -std=c99 -g -lm
 # Source files
 SOURCES = functions.c GA.c OF.c
 # Object files
