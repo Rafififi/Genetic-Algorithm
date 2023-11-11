@@ -6,36 +6,23 @@
 
 int main(int argc, char *argv[])
 {
-    int POPULATION_SIZE, MAX_GENERATIONS;
-    double crossover_rate, mutate_rate, stop_criteria;
+    int generation;
     // <YOUR CODE: Handle the possible errors in input data given by the user and say how to execute the code>
-    if (argc == 1)
-    {
-        POPULATION_SIZE = 1000;
-        MAX_GENERATIONS = 10000;
-        crossover_rate = 0.5;
-        mutate_rate = 0.1;
-        stop_criteria = 1e-16;
-        
-    }
-    else if (argc != 6)
+    if (argc != 6)
     {
         printf("Incorrect number of inputs. Expected 6 inputs .\n");
         return 1; // Exit the program with an error status
     }
-    else
+    // <YOUR CODE: Assign all inputs given by the user argv[i]>
+    int POPULATION_SIZE = atoi(argv[1]);
+    int MAX_GENERATIONS = atoi(argv[2]);
+    double crossover_rate = atof(argv[3]);
+    double mutate_rate = atof(argv[4]);
+    double stop_criteria = atof(argv[5]);
+    if (POPULATION_SIZE <= 0 || MAX_GENERATIONS <= 0 || crossover_rate <= 0 || mutate_rate <= 0 || stop_criteria <= 0)
     {
-        // <YOUR CODE: Assign all inputs given by the user argv[i]>
-        POPULATION_SIZE = atoi(argv[1]);
-        MAX_GENERATIONS = atoi(argv[2]);
-        crossover_rate = atof(argv[3]);
-        mutate_rate = atof(argv[4]);
-        stop_criteria = atof(argv[5]);
-        if (POPULATION_SIZE <= 0 || MAX_GENERATIONS <= 0 || crossover_rate <= 0 || mutate_rate <= 0 || stop_criteria <= 0)
-        {
-            printf("One or more inputs is invalid\n");
-            exit(0);
-        }
+        printf("One or more inputs is invalid\n");
+        exit(0);
     }
     printf("%d, %d, %f, %f, %.16lf\n", POPULATION_SIZE, MAX_GENERATIONS, crossover_rate, mutate_rate, stop_criteria);
 
@@ -71,7 +58,7 @@ int main(int argc, char *argv[])
     
     
 
-    for (int generation = 0; generation < MAX_GENERATIONS; generation++)
+    for (generation = 0; generation < MAX_GENERATIONS; generation++)
     {
         // <YOUR CODE: Compute the fitness values using objective function for
         // each row in "population" (each set of variables)> like:
@@ -81,7 +68,7 @@ int main(int argc, char *argv[])
         bestFitness[generation] = fitness[0];
         for(int i = 0; i < POPULATION_SIZE; i++)
         {
-            if(fitness[i] > bestFitness[generation])
+            if(fitness[i] < bestFitness[generation])
             {
                 bestFitness[generation] = fitness[i];
                 index = i;
@@ -90,7 +77,7 @@ int main(int argc, char *argv[])
 
         if (generation > 0)
         {
-            if(bestFitness[generation] - bestFitness[generation-1] < stop_criteria && bestFitness[generation] - bestFitness[generation-1] > 0)
+            if(bestFitness[generation] - bestFitness[generation-1] < stop_criteria && bestFitness[generation] - bestFitness[generation-1] >= 0)
             {
                 printf("%f\n", bestFitness[generation] - bestFitness[generation - 1]);
                 printf("Stopping criteria met\n");
@@ -119,6 +106,7 @@ int main(int argc, char *argv[])
     // <Here print out the best solution and objective function value for the best solution like the format>
     printf("Best solution: %f, %f, %d\n", population[index][0], population[index][1], index);
     printf("Objective function value for the best solution: %f\n", Objective_function(NUM_VARIABLES, population[index]));
+    printf("Generation, %d\n", generation);
 
     
 }
