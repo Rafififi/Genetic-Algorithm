@@ -48,17 +48,17 @@ void generate_population(int POPULATION_SIZE, int NUM_VARIABLES, double populati
 // Function to compute the objective function for each member of the population
 void compute_objective_function(int POPULATION_SIZE, int NUM_VARIABLES, double population[POPULATION_SIZE][NUM_VARIABLES], double fitness[POPULATION_SIZE])
 {
-    double fitnessSum;
+    double fitnessSum = 0.0;
     /* compute "fitness[i]"" for each set of decision variables (individual) or each row in "population"
     by calling "Objective_function" */
     for (int i = 0; i < POPULATION_SIZE; i++)
     {
-        fitness[i] = 1/(Objective_function(NUM_VARIABLES, population[i])+1e-6);
+        fitness[i] = Objective_function(NUM_VARIABLES, population[i]);
         fitnessSum += fitness[i];
     }
     for (int i = 0; i < POPULATION_SIZE; i++)
     {
-        fitness[i] = fitness[i]/fitnessSum;
+        fitness[i] /= fitnessSum;
     }
 
 }
@@ -70,18 +70,21 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
     And save the new population in "new_population"*/
     double randomFloat;
     int crossPoint;
+    double parent1[NUM_VARIABLES];
+    double parent2[NUM_VARIABLES];
+    
     for(int i = 0; i < POPULATION_SIZE; i++)
     {
-
+        fitness[i] = fitness[i];
         randomFloat = (double)rand() / (double)RAND_MAX;
         if (randomFloat > crossover_rate)
         {
-            double parent1[] = {population[i][1], population[i][2]};
-            double parent2[] = {population[i + 1][1], population[i+1][2]};
 
-            crossPoint = generate_int(1, NUM_VARIABLES);
+            crossPoint = (rand() % NUM_VARIABLES) + 1;
             for (int j = 0; j < NUM_VARIABLES; ++j)
             {
+                parent1[j] = population[i][j];
+                parent2[j] = population[i + 1][j];
                 if (j < crossPoint)
                 {
                     new_population[i][j] = parent1[j];
@@ -93,16 +96,14 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
                     new_population[i + 1][j] = parent1[j];
                 }
             }
-        }   
-
-    }
-    compute_objective_function(POPULATION_SIZE, NUM_VARIABLES, new_population, fitness);
-//Make population equal to new_population
-    for (int i = 0; i < POPULATION_SIZE; i++)
-    {
-        for(int j = 0; j < NUM_VARIABLES; j++)
+        }
+        else
         {
-            population[i][j] = new_population[i][j];
+            for (int j = 0; j < NUM_VARIABLES; ++j)
+            {
+                new_population[i][j] = population[i][j];
+                new_population[i + 1][j] = population[i + 1][j];
+            }
         }
     }
 }
@@ -119,9 +120,8 @@ void mutate(int POPULATION_SIZE, int NUM_VARIABLES, double new_population[POPULA
             if (randomFloat > mutate_rate)
             {
                 new_population[i][j] = generate_random(Lbound[j], Ubound[j]);
+                population[i][j] = new_population[i][j];
             }
-            population[i][j] = new_population[i][j];
-
         }
     }
 }

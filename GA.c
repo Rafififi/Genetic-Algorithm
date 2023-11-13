@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     double crossover_rate = atof(argv[3]);
     double mutate_rate = atof(argv[4]);
     double stop_criteria = atof(argv[5]);
-    if (POPULATION_SIZE <= 0 || MAX_GENERATIONS <= 0 || crossover_rate <= 0 || mutate_rate <= 0 || stop_criteria <= 0)
+    if (POPULATION_SIZE <= 0 || MAX_GENERATIONS <= 0 || crossover_rate <= 0 || mutate_rate <= 0 || stop_criteria < 0)
     {
         printf("One or more inputs is invalid\n");
         exit(0);
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     clock_t start_time, end_time;
     double cpu_time_used;
     start_time = clock();
-    srand((unsigned)time(NULL));
+    srand(time(NULL));
 
     
     // <YOUR CODE: Declare all the arrays you need here>
@@ -49,8 +49,8 @@ int main(int argc, char *argv[])
     double population[POPULATION_SIZE][NUM_VARIABLES];
     double fitness[POPULATION_SIZE];
     double new_population[POPULATION_SIZE][NUM_VARIABLES];
-    double bestFitness[POPULATION_SIZE];
-    int index = 0;
+    double bestFitness[] = {0.0, 0.0};
+    unsigned short int index = 0;
     // <YOUR CODE: Call generate_population function to initialize the "population"> like:
     generate_population(POPULATION_SIZE, NUM_VARIABLES, population, Lbound, Ubound);
     // iteration starts here. The loop continues until MAX_GENERATIONS is reached
@@ -65,30 +65,34 @@ int main(int argc, char *argv[])
         compute_objective_function(POPULATION_SIZE, NUM_VARIABLES, population, fitness);
         // <YOUR CODE: Here implement the logic of finding best solution with minimum fitness value
         // and the stopping criteria>
-        bestFitness[generation] = fitness[0];
+        bestFitness[0] = fitness[0];
         for(int i = 0; i < POPULATION_SIZE; i++)
         {
-            if(fitness[i] < bestFitness[generation])
+            if(fitness[i] < bestFitness[0])
             {
-                bestFitness[generation] = fitness[i];
+                bestFitness[0] = fitness[i];
                 index = i;
             }
         }
-
         if (generation > 0)
         {
-            if(bestFitness[generation] - bestFitness[generation-1] < stop_criteria && bestFitness[generation] - bestFitness[generation-1] >= 0)
+            if(bestFitness[1] - bestFitness[0] < stop_criteria && bestFitness[1] - bestFitness[0] >= 0)
             {
-                printf("%f\n", bestFitness[generation] - bestFitness[generation - 1]);
                 printf("Stopping criteria met\n");
                 break;
             }
+            if (generation == MAX_GENERATIONS)
+            {
+                printf("Stopping criteria not met\n");
+                break;
+            }
         }
+        bestFitness[1] = bestFitness[0];
         // <YOUR CODE: Here call the crossover function>
         crossover(POPULATION_SIZE, NUM_VARIABLES, fitness, new_population, population, crossover_rate);
         // <YOUR CODE: Here call the mutation function>
-        mutate(POPULATION_SIZE, NUM_VARIABLES, new_population, population, Lbound, Ubound, mutate_rate);
 
+        mutate(POPULATION_SIZE, NUM_VARIABLES, new_population, population, Lbound, Ubound, mutate_rate);
         // Now you have the a new population, and it goes to the beginning of loop to re-compute all again
    
     }
@@ -104,9 +108,7 @@ int main(int argc, char *argv[])
     // ###################################################################################
 
     // <Here print out the best solution and objective function value for the best solution like the format>
-    printf("Best solution: %f, %f, %d\n", population[index][0], population[index][1], index);
-    printf("Objective function value for the best solution: %f\n", Objective_function(NUM_VARIABLES, population[index]));
-    printf("Generation, %d\n", generation);
-
-    
+    printf("Best solution: %.16lf, %.16lf, %d\n", population[index][0], population[index][1], index);
+    printf("Objective function value for the best solution: %.16lf\n", Objective_function(NUM_VARIABLES, population[index]));
+    printf("Generation, %d\n", generation);   
 }
