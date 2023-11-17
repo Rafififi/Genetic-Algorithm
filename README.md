@@ -1,2 +1,2 @@
 # Genetic-Algorithm
-My First Genetic Algorithm
+My First Genetic Algorithm in C 
