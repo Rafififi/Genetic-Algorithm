@@ -1,21 +1,14 @@
-# Makefile for the 'thing' program
-# Specify the compiler
 CC = gcc
-# Compiler flags
-CFLAGS =  -Wall -Wextra -Werror -Wpedantic -std=gnu99 -g
-# Source files
-SOURCES = functions.c GA.c
-# Object files
+CFLAGS = -std=gnu99
+SOURCES = functions.c GA.c OF.c
 OBJECTS = $(SOURCES:.c=.o)
-# Header file
-HEADERS = functions.h
-# EXECUTABLE executable
+HEADERS = functions.h 
 EXECUTABLE = Algo
-# Default EXECUTABLE
+
 all: $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(OBJECTS) -lm
-# Compile source files into object files
+	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(OBJECTS) -Ofast -lm 
+
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 clean:
