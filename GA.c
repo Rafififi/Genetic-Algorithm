@@ -10,9 +10,9 @@
 {
     int generation;
     // <YOUR CODE: Handle the possible errors in input data given by the user and say how to execute the code>
-    if (argc != 6)
+    if (argc != 7)
     {
-        printf("Incorrect number of inputs. Expected 6 inputs .\n");
+        printf("Incorrect number of inputs. Expected 7 inputs .\n");
         return 1; // Exit the program with an error status
     }
     // <YOUR CODE: Assign all inputs given by the user argv[i]>
@@ -21,18 +21,19 @@
     double crossover_rate = atof(argv[3]);
     double mutate_rate = atof(argv[4]);
     double stop_criteria = atof(argv[5]);
+    int NUM_VARIABLES = atoi(argv[6]);
     // Check the inputs to make sure they are valid
-    if (POPULATION_SIZE <= 0 || MAX_GENERATIONS <= 0 || crossover_rate <= 0 || crossover_rate > 1 || mutate_rate > 1 || mutate_rate <= 0 || stop_criteria < 0)
+    if (POPULATION_SIZE <= 0 || MAX_GENERATIONS <= 0 || crossover_rate <= 0 || crossover_rate > 1 || mutate_rate > 1 || mutate_rate <= 0 || stop_criteria < 0 || NUM_VARIABLES <= 0)
     {
         printf("One or more inputs is invalid\n");
-        printf("The order is ./Algo POPULATION_SIZE MAX_GENERATIONS crossover_rate mutate_rate stop_criteria\n");
+        printf("The order is ./Algo POPULATION_SIZE MAX_GENERATIONS crossover_rate mutate_rate stop_criteria NUM_VARIABLES\n");
         exit(0);
     }
     printf("Genetic Algorithm is initiated\n");
     // ###################################################################################
     // you dont need to change anything here
     // the number of variables
-    int NUM_VARIABLES = 2; // To change the amount of variables only change this line
+    // To change the amount of variables only change this line
     // the lower bounds of variables
     double Lbound[NUM_VARIABLES];
     for (int i = 0; i < NUM_VARIABLES; i++)
@@ -151,10 +152,10 @@
     // ###################################################################################
 
     // <Here print out the best solution and objective function value for the best solution like the format>
-    printf("Best solution found: %.16lf, %.16lf", bestPosition[0], bestPosition[1]);
-    if (NUM_VARIABLES >= 3)
+    printf("Best solution found:");
+    if (NUM_VARIABLES >= 1)
     {
-        for (int i = 1; i < NUM_VARIABLES; i++)
+        for (int i = 0; i < NUM_VARIABLES; i++)
         {
             printf(", %.16lf", bestPosition[i]);
         }
