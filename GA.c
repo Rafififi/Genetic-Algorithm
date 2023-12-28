@@ -5,14 +5,14 @@
 #include <stdlib.h>
 #include <math.h>
 
-    int
-    main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     int generation;
     // <YOUR CODE: Handle the possible errors in input data given by the user and say how to execute the code>
     if (argc != 7)
     {
         printf("Incorrect number of inputs. Expected 7 inputs .\n");
+        puts("The order is ./Algo POPULATION_SIZE MAX_GENERATIONS crossover_rate mutate_rate stop_criteria NUM_VARIABLES");
         return 1; // Exit the program with an error status
     }
     // <YOUR CODE: Assign all inputs given by the user argv[i]>
@@ -143,6 +143,7 @@
     printf("Generation: %d\n", generation);
     printf("Results\n");
     printf("-------------------------------------------\n");
+
     // ###################################################################################
     // You dont need to change anything here
     // Here we print the CPU time taken for your code
@@ -153,18 +154,12 @@
 
     // <Here print out the best solution and objective function value for the best solution like the format>
     printf("Best solution found:");
-    if (NUM_VARIABLES >= 1)
+    for (int i = 0; i < NUM_VARIABLES; i++)
     {
-        for (int i = 0; i < NUM_VARIABLES; i++)
-        {
-            printf(", %.16lf", bestPosition[i]);
-        }
-        printf("\n");
+        printf(", %e", bestPosition[i]);
     }
-    else
-    {
-        printf("\n");
-    }
-    printf("Best objective function value: %.16lf\n", (Objective_function(NUM_VARIABLES, bestPosition)));
+    printf("\n");
+    
+    printf("Best objective function value: %e\n", (Objective_function(NUM_VARIABLES, bestPosition)));
     printf("Best Fitness: %.16lf\n", 1 / (Objective_function(NUM_VARIABLES, bestPosition) + 1e-6));
 }
