@@ -41,7 +41,8 @@ void compute_objective_function(int POPULATION_SIZE, int NUM_VARIABLES, double p
     by calling "Objective_function" */
     for (int i = 0; i < POPULATION_SIZE; i++)
     {
-        fitness[i] = 1 / (Objective_function(NUM_VARIABLES, population[i]) + 1e-10); // calculate fitness
+        //FOR DIFFERENT OF.C THIS NEEDS TO BE CHANGED
+        fitness[i] = (Objective_function(NUM_VARIABLES, population[i])); // calculate fitness
     }
 }
 
