@@ -38,13 +38,13 @@ int main(int argc, char *argv[])
     double Lbound[NUM_VARIABLES];
     for (int i = 0; i < NUM_VARIABLES; i++)
     {
-        Lbound[i] = -10.0;
+        Lbound[i] = -5;
     }
     // the upper bounds of variable
     double Ubound[NUM_VARIABLES];
     for (int i = 0; i < NUM_VARIABLES; i++)
     {
-        Ubound[i] = 10.0;
+        Ubound[i] = 5;
     }
     // ###################################################################################
 
@@ -82,13 +82,13 @@ int main(int argc, char *argv[])
         // Finds the best fitness value from this generation and its index
         for (int i = 0; i < POPULATION_SIZE; i++)
         {
-            if (fitness[i] < bestFitness[0]) // FOR DIFFERENT OF.C THIS NEEDS TO BE CHANGED
+            if (fitness[i] > bestFitness[0]) // If this is a function that should be going to zero then use >
             {
                 bestFitness[0] = fitness[i];
                 index = i;
             }
         }
-        if (bestFitness[0] < bestSolution) // FOR DIFFERENT OF.C THIS NEEDS TO BE CHANGED
+        if (bestFitness[0] > bestSolution) //  If this is a function that should be going to zero then use >
         {
             bestSolution = bestFitness[0];
             for (int i = 0; i < NUM_VARIABLES; i++)
@@ -160,6 +160,6 @@ int main(int argc, char *argv[])
     }
     printf("\n");
     
-    printf("Best objective function value: %.16lf\n", (Objective_function(NUM_VARIABLES, bestPosition)));
+    printf("Best Function Value found: %.16lf\n", (Objective_function(NUM_VARIABLES, bestPosition)));
     printf("Best Fitness: %.16lf\n", 1 / (Objective_function(NUM_VARIABLES, bestPosition) + 1e-6));
 }

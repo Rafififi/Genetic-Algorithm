@@ -1,0 +1,196 @@
+gcc -std=gnu99 -c functions.c -o functions.o
+gcc -std=gnu99 -c GA.c -o GA.o
+gcc -std=gnu99 -c OF.c -o OF.o
+gcc -std=gnu99 -o Algo functions.o GA.o OF.o -Ofast -lm 
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.505752 seconds
+Best solution found:, -0.0000366638414731, 0.0056763435740379
+Best Function Value found: 0.0169132568095596
+Best Fitness: 59.1217226543954055
+1
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.511144 seconds
+Best solution found:, -0.0004880200142452, 0.0002671056428305
+Best Function Value found: 0.0015817955358526
+Best Fitness: 631.7935433532446723
+2
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.510556 seconds
+Best solution found:, -0.0001135910861718, 0.0055879377786017
+Best Function Value found: 0.0166399420238226
+Best Fitness: 60.0927518747698244
+3
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.544601 seconds
+Best solution found:, -0.0009112781849279, 0.0017233309344036
+Best Function Value found: 0.0056150283128926
+Best Fitness: 178.0617803696460442
+4
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.503119 seconds
+Best solution found:, 0.0010856031445252, -0.0002019410022545
+Best Function Value found: 0.0031556899119605
+Best Fitness: 316.7875299411173273
+5
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.505805 seconds
+Best solution found:, -0.0005071167836466, 0.0003351760098411
+Best Function Value found: 0.0017291657911547
+Best Fitness: 577.9792925697728379
+6
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.512343 seconds
+Best solution found:, -0.0000430573709505, 0.0030848081238037
+Best Function Value found: 0.0089794311471114
+Best Fitness: 111.3532283270890844
+7
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.514146 seconds
+Best solution found:, 0.0001326692291226, -0.0003986828962335
+Best Function Value found: 0.0011931427987624
+Best Fitness: 837.4207850488377289
+8
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.505081 seconds
+Best solution found:, -0.0000055204145637, 0.0001033744775238
+Best Function Value found: 0.0002930891617869
+Best Fitness: 3400.3293216377337558
+9
+Genetic Algorithm is initiated
+-------------------------------------------
+number of variables 2
+Lower Bounds: -5.0000000000000000, -5.0000000000000000
+Upper Bounds: 5.0000000000000000, 5.0000000000000000
+
+Population size: 1000
+Max generations: 1000
+Crossover rate: 0.500000
+Mutation rate: 0.050000
+Stopping criteria: 0.0000000000000000
+Generation: 1000
+Results
+-------------------------------------------
+CPU time: 1.503856 seconds
+Best solution found:, 0.0037297909165401, 0.0003421236762504
+Best Function Value found: 0.0109672402431937
+Best Fitness: 91.1723282703023727
+10
+Best fitness is from all of the run throughs is: 3400.3293216377338
+rm -f functions.o GA.o OF.o Algo && rm parser

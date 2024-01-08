@@ -42,13 +42,13 @@ void compute_objective_function(int POPULATION_SIZE, int NUM_VARIABLES, double p
     for (int i = 0; i < POPULATION_SIZE; i++)
     {
         //FOR DIFFERENT OF.C THIS NEEDS TO BE CHANGED
-        fitness[i] = (Objective_function(NUM_VARIABLES, population[i])); // calculate fitness
+        fitness[i] = 1/(Objective_function(NUM_VARIABLES, population[i])); // If the function should be going to zero 1/OF is used
     }
 }
 
 void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION_SIZE], double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES], double crossover_rate)
 {
-    /* Implement the logic of crossover function here based on "fitness_probs" or each set
+    /* Implement the logic of crossover function here based on "(fitness[j])" or each set
     of decision variables (individual) or each row in "population".
     And save the new population in "new_population"*/
     double randomFloat;
@@ -56,7 +56,6 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
     int crossPoint;
     double parent1[NUM_VARIABLES];
     double parent2[NUM_VARIABLES];
-    double fitness_probs[POPULATION_SIZE];
     int parent1Index = 0;
     int parent2Index = 0;
     double cumulativeSum = 0.0;
@@ -65,17 +64,12 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
     {
         fitnessSum += fitness[i];
     }
-    // get the fitness probability for each individual
-    for (int i = 0; i < POPULATION_SIZE; i++)
-    {
-        fitness_probs[i] = fitness[i] / fitnessSum;
-    }
 
     for (int i = 0; i < POPULATION_SIZE; i++)
     {
         for (int j = 0; j < POPULATION_SIZE; j++)
         {
-            cumulativeSum += fitness_probs[j];
+            cumulativeSum += (fitness[j]/fitnessSum);
             randomFloat = generate_random(0.0, 1.0);
             if (randomFloat < cumulativeSum) // if the float is generated is less than the sum the coordinates asscosiated with it are set as the parent
             {
@@ -88,7 +82,7 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
         cumulativeSum = 0.0; // reset cumulative sum
         for (int j = 0; j < POPULATION_SIZE; j++)
         {
-            cumulativeSum += fitness_probs[j];
+            cumulativeSum += (fitness[j]/fitnessSum);
             if (randomFloat < cumulativeSum) // if the float is generated is less than the sum the coordinates asscosiated with it are set as the parent
             {
                 parent2Index = j; // index of parent 2

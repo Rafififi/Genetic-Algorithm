@@ -9,10 +9,10 @@ fn main() -> io::Result<()> {
     let mut number: f64 = 0.0;
     for line in reader.lines() {
         let line = line?;
-        if line.contains("Best objective") {
+        if line.contains("Best Fitness") {
             let parts: Vec<&str> = line.split_whitespace().collect();
             if let Some(&current_number) = parts.last() {
-                if current_number.parse::<f64>().unwrap_or(0.0) < number { // The </> should be switched if the value is supposed to be more or less depending on the OF.c
+                if current_number.parse::<f64>().unwrap_or(0.0) > number { // The </> should be switched if the value is supposed to be more or less depending on the OF.c
                     number = current_number.parse::<f64>().unwrap_or(0.0);
                 }
             }
