@@ -1,4 +1,3 @@
-// Include everything necessary here
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -7,7 +6,6 @@
 
 double generate_random(double min, double max)
 {
-    // implement a function to return a value between min and max
     double randomFloat = (double)rand() / (double)RAND_MAX;
     // RAND_MAX is the maximum value returned by rand() making randomFloat between 0 and 1
     double randomFloatBetween = min + randomFloat * (max - min); // this forces the value to be between the min and max
@@ -16,13 +14,11 @@ double generate_random(double min, double max)
 
 unsigned int generate_int()
 {
-    // implement the function to return a random integer value
-    int randomInt = rand();
-    return randomInt;
+    return rand();
 }
 
 // Function to initialize a random population
-void generate_population(int POPULATION_SIZE, int NUM_VARIABLES, double population[POPULATION_SIZE][NUM_VARIABLES], double Lbound[NUM_VARIABLES], double Ubound[NUM_VARIABLES])
+void generate_population(const int POPULATION_SIZE, const int NUM_VARIABLES, double population[POPULATION_SIZE][NUM_VARIABLES], const double Lbound[NUM_VARIABLES], const double Ubound[NUM_VARIABLES])
 {
     // randomly initialize for all values in "population[i][j]""
     for (int i = 0; i < POPULATION_SIZE; i++)
@@ -35,22 +31,19 @@ void generate_population(int POPULATION_SIZE, int NUM_VARIABLES, double populati
 }
 
 // Function to compute the objective function for each member of the population
-void compute_objective_function(int POPULATION_SIZE, int NUM_VARIABLES, double population[POPULATION_SIZE][NUM_VARIABLES], double fitness[POPULATION_SIZE])
+void compute_objective_function(const int POPULATION_SIZE, const int NUM_VARIABLES, double population[POPULATION_SIZE][NUM_VARIABLES], double fitness[POPULATION_SIZE])
 {
     /* compute "fitness[i]"" for each set of decision variables (individual) or each row in "population"
     by calling "Objective_function" */
     for (int i = 0; i < POPULATION_SIZE; i++)
     {
-        //FOR DIFFERENT OF.C THIS NEEDS TO BE CHANGED
         fitness[i] = 1/(Objective_function(NUM_VARIABLES, population[i])); // If the function should be going to zero 1/OF is used
     }
 }
 
-void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION_SIZE], double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES], double crossover_rate)
+void crossover(const int POPULATION_SIZE, const int NUM_VARIABLES, double fitness[POPULATION_SIZE], double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES], const double crossover_rate)
 {
-    /* Implement the logic of crossover function here based on "(fitness[j])" or each set
-    of decision variables (individual) or each row in "population".
-    And save the new population in "new_population"*/
+
     double randomFloat;
     double fitnessSum = 0.0;
     int crossPoint;
@@ -71,7 +64,7 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
         {
             cumulativeSum += (fitness[j]/fitnessSum);
             randomFloat = generate_random(0.0, 1.0);
-            if (randomFloat < cumulativeSum) // if the float is generated is less than the sum the coordinates asscosiated with it are set as the parent
+            if (randomFloat < cumulativeSum) // if the float is generated is less than the sum the coordinates associated with it are set as the parent
             {
                 parent1Index = j; // index of parent 1
                 break;
@@ -83,7 +76,7 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
         for (int j = 0; j < POPULATION_SIZE; j++)
         {
             cumulativeSum += (fitness[j]/fitnessSum);
-            if (randomFloat < cumulativeSum) // if the float is generated is less than the sum the coordinates asscosiated with it are set as the parent
+            if (randomFloat < cumulativeSum) // if the float is generated is less than the sum the coordinates associated with it are set as the parent
             {
                 parent2Index = j; // index of parent 2
                 break;
@@ -125,9 +118,8 @@ void crossover(int POPULATION_SIZE, int NUM_VARIABLES, double fitness[POPULATION
     }
 }
 
-void mutate(int POPULATION_SIZE, int NUM_VARIABLES, double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES], double Lbound[NUM_VARIABLES], double Ubound[NUM_VARIABLES], double mutate_rate)
+void mutate(const int POPULATION_SIZE, const int NUM_VARIABLES, double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES], const double Lbound[NUM_VARIABLES], const double Ubound[NUM_VARIABLES], const double mutate_rate)
 {
-    /*Implement the logic of mutation on "new_population" and then copy everything into "population"*/
     double randomFloat;
     int toBeMutated = (int)(POPULATION_SIZE * NUM_VARIABLES * mutate_rate); // number of variables to be mutated
     int amountMutated = 0;
