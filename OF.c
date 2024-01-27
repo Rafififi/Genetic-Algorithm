@@ -2,7 +2,7 @@
 #include "functions.h"
 
 // Define the objective function function for optimization
-double Objective_function(int NUM_VARIABLES, double x[NUM_VARIABLES])
+double Objective_function(const int NUM_VARIABLES, double x[NUM_VARIABLES])
 {
     // While the objective function could be anything here it is to minimize Ackley function
     double sum1 = 0.0, sum2 = 0.0;

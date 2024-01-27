@@ -1,7 +1,4 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <math.h>
 #include "functions.h"
 
 double generate_random(double min, double max)
@@ -18,7 +15,8 @@ unsigned int generate_int()
 }
 
 // Function to initialize a random population
-void generate_population(const int POPULATION_SIZE, const int NUM_VARIABLES, double population[POPULATION_SIZE][NUM_VARIABLES], const double Lbound[NUM_VARIABLES], const double Ubound[NUM_VARIABLES])
+void generate_population(const int POPULATION_SIZE, const int NUM_VARIABLES,
+    double population[POPULATION_SIZE][NUM_VARIABLES],  double Lbound[NUM_VARIABLES],  double Ubound[NUM_VARIABLES])
 {
     // randomly initialize for all values in "population[i][j]""
     for (int i = 0; i < POPULATION_SIZE; i++)
@@ -41,7 +39,7 @@ void compute_objective_function(const int POPULATION_SIZE, const int NUM_VARIABL
     }
 }
 
-void crossover(const int POPULATION_SIZE, const int NUM_VARIABLES, double fitness[POPULATION_SIZE], double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES], const double crossover_rate)
+void crossover(const int POPULATION_SIZE, const int NUM_VARIABLES, double fitness[POPULATION_SIZE], double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES],  double crossover_rate)
 {
 
     double randomFloat;
@@ -118,7 +116,7 @@ void crossover(const int POPULATION_SIZE, const int NUM_VARIABLES, double fitnes
     }
 }
 
-void mutate(const int POPULATION_SIZE, const int NUM_VARIABLES, double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES], const double Lbound[NUM_VARIABLES], const double Ubound[NUM_VARIABLES], const double mutate_rate)
+void mutate(const int POPULATION_SIZE, const int NUM_VARIABLES, double new_population[POPULATION_SIZE][NUM_VARIABLES], double population[POPULATION_SIZE][NUM_VARIABLES],  double Lbound[NUM_VARIABLES],  double Ubound[NUM_VARIABLES],  double mutate_rate)
 {
     double randomFloat;
     int toBeMutated = (int)(POPULATION_SIZE * NUM_VARIABLES * mutate_rate); // number of variables to be mutated
