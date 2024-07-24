@@ -1,4 +1,7 @@
-make: Nothing to be done for 'all'.
+gcc -std=gnu99 -c functions.c -o functions.o
+gcc -std=gnu99 -c GA.c -o GA.o
+gcc -std=gnu99 -c OF.c -o OF.o
+gcc -std=gnu99 -o Algo functions.o GA.o OF.o -Ofast -lm 
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -13,11 +16,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.739598 seconds
-Best solution found:, 0.0000695302151463, -0.0000223866663980
-Best Function Value found: 0.0002067453439065
-Best Fitness: 4813.5856197574357793
-1
+CPU time: 1.864086 seconds
+Best solution found:, 0.0000197649933487, -0.0020904908897776
+Best Function Value found: 0.0060294416948961
+Best Fitness: 165.8253326363081328
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -32,11 +34,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.738289 seconds
-Best solution found:, -0.0037487153912661, -0.0000813440420107
-Best Function Value found: 0.0109798022175593
-Best Fitness: 91.0680276529255224
-2
+CPU time: 1.865753 seconds
+Best solution found:, 0.0001027504913989, -0.0000340980477791
+Best Function Value found: 0.0003065190868239
+Best Fitness: 3251.8306760343989481
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -51,11 +52,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.764984 seconds
-Best solution found:, 0.0000278581865265, -0.0002193893306979
-Best Function Value found: 0.0006268117703034
-Best Fitness: 1592.8341061791102220
-3
+CPU time: 1.865468 seconds
+Best solution found:, -0.0009352224883328, 0.0113811879471797
+Best Function Value found: 0.0357681454022480
+Best Fitness: 27.9570559697283514
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -70,11 +70,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.769765 seconds
-Best solution found:, 0.0002176989802241, -0.0001054001041245
-Best Function Value found: 0.0006856749253328
-Best Fitness: 1456.2931645062981261
-4
+CPU time: 1.876396 seconds
+Best solution found:, -0.0007775495763767, 0.0009098299783243
+Best Function Value found: 0.0034232546426520
+Best Fitness: 292.0343561907289427
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -89,11 +88,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.745960 seconds
-Best solution found:, -0.0004404759967889, -0.0003679399380312
-Best Function Value found: 0.0016320985419296
-Best Fitness: 612.3329207179701825
-5
+CPU time: 1.863535 seconds
+Best solution found:, 0.0102214352275345, -0.0001338520087923
+Best Function Value found: 0.0316932145923343
+Best Fitness: 31.5514996305307953
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -108,11 +106,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.738250 seconds
-Best solution found:, 0.0000399700366147, -0.0001547834836666
-Best Function Value found: 0.0004528356137503
-Best Fitness: 2203.4410030900976381
-6
+CPU time: 1.862459 seconds
+Best solution found:, -0.0000511226244511, -0.0070537044699552
+Best Function Value found: 0.0212758274636724
+Best Fitness: 46.9994881383222420
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -127,11 +124,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.767092 seconds
-Best solution found:, -0.0001917383634451, 0.0000660098158134
-Best Function Value found: 0.0005746515759069
-Best Fitness: 1737.1619254661789000
-7
+CPU time: 1.863477 seconds
+Best solution found:, -0.0001099822111943, -0.0007574376653681
+Best Function Value found: 0.0021804231015179
+Best Fitness: 458.4163426637287557
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -146,11 +142,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.767197 seconds
-Best solution found:, -0.0000785407610602, 0.0010852166456568
-Best Function Value found: 0.0031090085157541
-Best Fitness: 321.5425279173279023
-8
+CPU time: 1.857844 seconds
+Best solution found:, 0.0000429176725643, -0.0035154703089573
+Best Function Value found: 0.0102730957820794
+Best Fitness: 97.3321663736340952
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -165,11 +160,10 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.766022 seconds
-Best solution found:, 0.0033924938195353, 0.0002075801604464
-Best Function Value found: 0.0099209519587302
-Best Fitness: 100.7866198263650119
-9
+CPU time: 1.609821 seconds
+Best solution found:, -0.0019887997778074, 0.0014883396222665
+Best Function Value found: 0.0071902432330195
+Best Fitness: 139.0580136975995060
 Genetic Algorithm is initiated
 -------------------------------------------
 number of variables 2
@@ -184,10 +178,9 @@ Stopping criteria: 0.0000000000000000
 Generation: 1000
 Results
 -------------------------------------------
-CPU time: 1.769347 seconds
-Best solution found:, 0.0000681658275745, -0.0056191091451883
-Best Function Value found: 0.0167350899163314
-Best Fitness: 59.7511130138096647
-10
-Best fitness is from all of the run throughs is: 4813.585619757436
+CPU time: 1.610254 seconds
+Best solution found:, 0.0018012314111928, -0.0000465265475427
+Best Function Value found: 0.0051828004660632
+Best Fitness: 192.9086596883303173
+Best fitness is from all of the run throughs is: 3251.830676034399
 rm -f functions.o GA.o OF.o Algo && rm parser

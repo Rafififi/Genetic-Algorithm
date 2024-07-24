@@ -12,4 +12,5 @@ $(EXECUTABLE): $(OBJECTS)
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 clean:
-	rm -f $(OBJECTS) $(EXECUTABLE) && rm parser
+	rm -f $(OBJECTS) $(EXECUTABLE) 
+# && rm parser
